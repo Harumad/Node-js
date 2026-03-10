@@ -1,0 +1,17 @@
+{
+   "name": "http-server",
+   "version": "1.0.0",
+   "description": "a server with http",
+   "main": "index.js",
+   "author": "Haruna",
+   "license": "MIT",
+   "scripts": {
+      "start": "nodemon"
+   },
+   "devDependencies": {
+      "nodemon": "^3.1.14"
+   },
+   "dependencies": {
+      "express": "^5.2.1"
+   }
+}

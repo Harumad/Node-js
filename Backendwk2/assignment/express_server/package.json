@@ -1,0 +1,15 @@
+{
+  "name": "express_server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "haruna",
+  "license": "MIT",
+  "scripts": {
+    "start":"node index.js"
+  },
+
+
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
