@@ -1,19 +1,48 @@
-const express =require ('express');
+const express = require("express");
+const path = require("path");
 
+// create express server
+const server = express();
 
-const server =express ('server');
+// static files
+server.use(express.static(path.join(__dirname, "public")));
 
+// homepage handler
+const Homepage = (req, res) => {
+  res.send("<h1>This is my Homepage</h1>");
+};
 
-// middleware definitions
+// about handler
+const Aboutpage = (req, res) => {
+  res.send("<h1>This is my Aboutpage</h1>");
+};
 
+// product
+const productPage = (req, res) => {
+  const product = [{ name: "Nido", price: "2GH" }];
+  res.json(product);
+};
 
+// middleware
+const HomepageMiddleware = (req, res, next) => {
+  console.log("Homepage middleware running");
+  next();
+};
 
-const serveHomePage =(req,res)=> {
- res.send ('Hello this is HomePage Handler');
-}
-// route definitions
-server.get('/', serveHomePage)
+const AboutpageMiddleware = (req, res, next) => {
+  console.log("Aboutpage middleware running");
+  next();
+};
 
+const productPageMiddleware = (req, res, next) => {
+  console.log("Product page middleware running");
+  next();
+};
 
+// routes
+server.get("/", HomepageMiddleware, Homepage);
+server.get("/about", AboutpageMiddleware, Aboutpage);
+server.get("/productPage", productPageMiddleware, productPage);
 
-server.listen(3000,()=> console.log ('server is ready'));
+// Start server
+server.listen(3000, () => console.log("Server is ready on port 3000"));
